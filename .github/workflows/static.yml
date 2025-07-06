@@ -27,3 +27,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
         folder: dist/QRStopTiming2/browser
+permissions:
+  contents: write
