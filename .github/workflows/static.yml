@@ -24,8 +24,6 @@ jobs:
         npm install
         npm run-script deploy
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: dist/QRStopTiming2/browser
+        folder: dist/QRStopTiming2/browser
