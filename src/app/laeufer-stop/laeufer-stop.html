@@ -1,0 +1,11 @@
+<button (click)="stopp()">L&auml;ufer Stopp</button>
+<table>
+    <thead>
+        <th>Name / Startnummer</th>
+        <th>Zeit</th>
+    </thead>
+    <tr *ngFor="let erg of ergebnisse">
+        <td>{{erg.name}}</td>
+        <td>{{erg.zeit | zeitformat}}</td>
+    </tr>
+</table>
