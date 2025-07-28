@@ -4,10 +4,11 @@ import { Scanner } from "./scanner/scanner";
 import { Stoppuhr } from './stoppuhr/stoppuhr';
 import { LaeuferStop } from './laeufer-stop/laeufer-stop';
 import { Subject } from 'rxjs';
+import { LaeuferListe } from "./laeufer-liste/laeufer-liste";
 
 @Component({
   selector: 'app-root',
-  imports: [Scanner, Stoppuhr, LaeuferStop],
+  imports: [Scanner, Stoppuhr, LaeuferStop, LaeuferListe],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

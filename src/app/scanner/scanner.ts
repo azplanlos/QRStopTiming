@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import QrScanner from 'qr-scanner';
 import { BehaviorSubject, distinctUntilChanged, Observable, Subject } from 'rxjs';
+import { Panel, PanelModule } from "primeng/panel";
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'scanner',
-  imports: [],
+  imports: [PanelModule, ButtonModule],
   templateUrl: './scanner.html',
   styleUrl: './scanner.scss'
 })

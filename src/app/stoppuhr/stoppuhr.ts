@@ -1,10 +1,13 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { interval, Subject, Subscription, tap, timer } from 'rxjs';
+import { PanelModule } from 'primeng/panel';
+import { ButtonModule } from 'primeng/button';
+
 import { Zeit } from '../zeit';
 
 @Component({
   selector: 'app-stoppuhr',
-  imports: [],
+  imports: [PanelModule, ButtonModule],
   templateUrl: './stoppuhr.html',
   styleUrl: './stoppuhr.scss'
 })
