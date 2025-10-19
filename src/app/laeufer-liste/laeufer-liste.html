@@ -1,7 +1,11 @@
 <p-panel header="Läufer Liste">
-    	<p-orderlist [value]="laeufer" dataKey="startnummer" [responsive]="true" breakpoint="575px">
+    <input type="file" class="file-input"
+       [accept]="requiredFileType"
+       (change)="onFileSelected($event)" #fileUpload>
+    <button pButton (click)="fileUpload.click()">Import</button>
+    	<p-orderlist [value]="laeuferListe()" dataKey="startnummer" [responsive]="true" breakpoint="575px">
             <ng-template #item let-option>
-                {{ option.startnummer }} {{ option.name }}
+                <qrcode [qrdata]="'qrstoptiming:' + option.startnummer" [width]="50" [errorCorrectionLevel]="'M'"></qrcode>{{ option.startnummer }} {{ option.name }}
             </ng-template>
         </p-orderlist>
 </p-panel>

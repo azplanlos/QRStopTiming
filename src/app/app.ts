@@ -22,7 +22,6 @@ export class App {
   }
 
   runner(event: String) {
-    console.log(event);
     this.runnerScan.next(event.toString());
   }
   protected title = 'QRStopTiming2';

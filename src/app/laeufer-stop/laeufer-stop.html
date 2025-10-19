@@ -1,11 +1,16 @@
-<button (click)="stopp()">L&auml;ufer Stopp</button>
-<table>
-    <thead>
-        <th>Name / Startnummer</th>
-        <th>Zeit</th>
-    </thead>
-    <tr *ngFor="let erg of ergebnisse">
-        <td>{{erg.name}}</td>
-        <td>{{erg.zeit | zeitformat}}</td>
-    </tr>
-</table>
+<p-panel header="Ergebnisse">
+    <div class="flex justify-content-between flex-wrap">
+        <div class="flex align-items-center"><p-button (click)="stopp()" severity="danger">L&auml;ufer Stopp</p-button></div>
+        <div class="flex align-items-center"><p-button (click)="reset()">Ergebnisse löschen</p-button></div>
+    </div>
+    <table>
+        <thead>
+            <th>Name / Startnummer</th>
+            <th>Zeit</th>
+        </thead>
+        <tr *ngFor="let erg of ergebnisse">
+            <td>{{lookupName(erg.name || "0")}}</td>
+            <td>{{erg.zeit | zeitformat}}</td>
+        </tr>
+    </table>
+</p-panel>

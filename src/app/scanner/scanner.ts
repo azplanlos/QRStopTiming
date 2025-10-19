@@ -27,10 +27,10 @@ export class Scanner implements AfterViewInit, OnInit {
 
   ngAfterViewInit(): void {
     this.qrScanner = new QrScanner(
-    this.videoElem.nativeElement,
-    result => this.filterSubject.next(result.data),
-    { /* your options or returnDetailedScanResult: true if you're not specifying any other options */ },
-);
+        this.videoElem.nativeElement,
+        result => this.filterSubject.next(result.data),
+        { /* your options or returnDetailedScanResult: true if you're not specifying any other options */ },
+    );
   }
 
   start() {
