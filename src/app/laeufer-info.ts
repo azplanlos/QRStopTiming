@@ -59,7 +59,7 @@ export class LaeuferInfo {
       return a.zeit - b.zeit
     }).reverse().forEach((erg, platz) => {
       const info = this.lookupScanInfo(erg.name || "");
-      ws2.addRow([platz, erg.zeit, info?.nachname, info?.name, info?.startnummer, info?.geschlecht, info?.verein]);
+      ws2.addRow([platz + 1, erg.zeit, info?.nachname, info?.name, info?.startnummer, info?.geschlecht, info?.verein]);
     });
     return wb2.xlsx.writeBuffer().then(buffer => {
       const base64String = btoa(String.fromCharCode(...new Uint8Array(buffer)));
