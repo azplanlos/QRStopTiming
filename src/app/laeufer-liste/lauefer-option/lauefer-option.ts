@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { QRCodeComponent } from "angularx-qrcode";
-import html2canvas from 'html2canvas';
 import qrcode from "qrcode";
 import { Button, ButtonModule } from "primeng/button";
 
