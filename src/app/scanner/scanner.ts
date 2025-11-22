@@ -40,7 +40,7 @@ export class Scanner implements AfterViewInit, OnInit {
 
   start() {
     this.qrScanner.start();
-    this.changeRef.tick();
+    setTimeout(() => this.changeRef.tick(), 2000);
   }
 
   videoRunning() {
