@@ -1,4 +1,4 @@
-<p-panel header="Läufer Liste">
+<p-panel header="Läufer Liste" [toggleable]="true">
     <input type="file" class="file-input"
        [accept]="requiredFileType"
        (change)="onFileSelected($event)" #fileUpload>

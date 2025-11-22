@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './scanner.scss'
 })
 export class Scanner implements AfterViewInit, OnInit {
+
   @ViewChild("qrVideo")
   private videoElem!: ElementRef<HTMLVideoElement>;
 
@@ -35,6 +36,11 @@ export class Scanner implements AfterViewInit, OnInit {
 
   start() {
     this.qrScanner.start();
+  }
+
+  videoRunning() {
+    console.log(this.qrScanner?.$video?.paused === false);
+    return this.qrScanner?.$video?.paused === false;
   }
 
 }
