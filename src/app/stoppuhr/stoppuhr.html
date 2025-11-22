@@ -1,6 +1,6 @@
 <p-panel header="Zeit">
 <h1>{{zeit()}}</h1>
-<p-button (click)="start()">Start</p-button>
-<p-button (click)="pause()">Pause</p-button>
-<p-button (click)="reset()">Reset</p-button>
+<p-button (click)="start()" [disabled]="isRunning()">Start</p-button>
+<p-button (click)="pause()" [disabled]="!isRunning()">Pause</p-button>
+<p-button (click)="reset()" [disabled]="isRunning()">Reset</p-button>
 </p-panel>

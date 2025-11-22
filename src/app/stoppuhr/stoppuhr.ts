@@ -12,6 +12,7 @@ import { Zeit } from '../zeit';
   styleUrl: './stoppuhr.scss'
 })
 export class Stoppuhr implements OnInit {
+
   @Output("seconds")
   private secondsEmitter = new EventEmitter<number>();
   private seconds = 0;
@@ -44,5 +45,9 @@ export class Stoppuhr implements OnInit {
   reset() {
     this.subscription?.unsubscribe();
     this.seconds = 0;
+  }
+
+  isRunning(): boolean {
+    return this.subscription?.closed === false || false;
   }
 }

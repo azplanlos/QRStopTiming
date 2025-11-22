@@ -1,0 +1,6 @@
+<div class="flex justify-content-evenly align-items-baseline w-max">
+    <qrcode [qrdata]="qrData()" [width]="50" [errorCorrectionLevel]="'M'" #qrCode class="flex align-items-center justify-content-center m-2" />
+    <div class="flex align-items-center justify-content-center m-2">{{ option.startnummer }}</div>
+    <div class="flex align-items-center justify-content-center border-round m-2">{{ option.name }}</div>
+    <p-button (click)="save()" icon="pi pi-save" severity="secondary" [text]="true" class="flex align-items-center justify-content-center m-2" />
+</div>

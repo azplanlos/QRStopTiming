@@ -5,7 +5,7 @@
     <button pButton (click)="fileUpload.click()">Import</button>
     	<p-orderlist [value]="laeuferListe()" dataKey="startnummer" [responsive]="true" breakpoint="575px">
             <ng-template #item let-option>
-                <qrcode [qrdata]="'qrstoptiming:' + option.startnummer" [width]="50" [errorCorrectionLevel]="'M'"></qrcode>{{ option.startnummer }} {{ option.name }}
+                <app-lauefer-option [option]="option" />
             </ng-template>
         </p-orderlist>
 </p-panel>

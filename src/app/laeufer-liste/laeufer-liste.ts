@@ -7,10 +7,11 @@ import { LaeuferInfo } from '../laeufer-info';
 import { CommonModule, NgForOf } from '@angular/common';
 import { Button, ButtonDirective } from "primeng/button";
 import { Buffer, Workbook } from "exceljs";
+import { LaueferOption } from "./lauefer-option/lauefer-option";
 
 @Component({
   selector: 'app-laeufer-liste',
-  imports: [PanelModule, OrderListModule, QRCodeComponent, CommonModule, ButtonDirective],
+  imports: [PanelModule, OrderListModule, CommonModule, ButtonDirective, LaueferOption],
   templateUrl: './laeufer-liste.html',
   styleUrl: './laeufer-liste.scss'
 })
@@ -39,5 +40,4 @@ export class LaeuferListe implements OnInit {
         this.laeufer = [...this.laeufer, info];
       });
   }
-
 }
