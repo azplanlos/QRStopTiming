@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ApplicationRef, ChangeDetectorRef, Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import QrScanner from 'qr-scanner';
 import { BehaviorSubject, distinctUntilChanged, Observable, Subject } from 'rxjs';
 import { Panel, PanelModule } from "primeng/panel";
@@ -34,12 +34,16 @@ export class Scanner implements AfterViewInit, OnInit {
     );
   }
 
+  constructor(private changeRef: ApplicationRef) {
+
+  }
+
   start() {
     this.qrScanner.start();
+    this.changeRef.tick();
   }
 
   videoRunning() {
-    console.log(this.qrScanner?.$video?.paused === false);
     return this.qrScanner?.$video?.paused === false;
   }
 
