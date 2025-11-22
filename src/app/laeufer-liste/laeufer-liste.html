@@ -2,7 +2,7 @@
     <input type="file" class="file-input"
        [accept]="requiredFileType"
        (change)="onFileSelected($event)" #fileUpload>
-    <button pButton (click)="fileUpload.click()">Import</button>
+    <p-button (click)="fileUpload.click()" icon="pi pi-file-import" label="Import"></p-button>
     	<p-orderlist [value]="laeuferListe()" dataKey="startnummer" [responsive]="true" breakpoint="575px">
             <ng-template #item let-option>
                 <app-lauefer-option [option]="option" />

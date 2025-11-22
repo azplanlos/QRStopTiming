@@ -1,6 +1,6 @@
 <p-panel header="Zeit">
-<h1>{{zeit()}}</h1>
-<p-button (click)="start()" [disabled]="isRunning()">Start</p-button>
-<p-button (click)="pause()" [disabled]="!isRunning()">Pause</p-button>
-<p-button (click)="reset()" [disabled]="isRunning()">Reset</p-button>
+<h1 class="m-2">{{zeit()}}</h1>
+<p-button (click)="start()" [disabled]="isRunning()" class="m-2" icon="pi pi-play" label="Start"></p-button>
+<p-button (click)="pause()" [disabled]="!isRunning()" class="m-2" icon="pi pi-pause" label="Pause"></p-button>
+<p-button (click)="reset()" [disabled]="isRunning()" class="m-2" icon="pi pi-refresh" severity="warn" label="Reset"></p-button>
 </p-panel>

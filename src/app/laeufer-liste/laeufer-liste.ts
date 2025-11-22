@@ -5,13 +5,13 @@ import { Laeufer } from '../laeufer';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { LaeuferInfo } from '../laeufer-info';
 import { CommonModule, NgForOf } from '@angular/common';
-import { Button, ButtonDirective } from "primeng/button";
+import { Button, ButtonDirective, ButtonModule } from "primeng/button";
 import { Buffer, Workbook } from "exceljs";
 import { LaueferOption } from "./lauefer-option/lauefer-option";
 
 @Component({
   selector: 'app-laeufer-liste',
-  imports: [PanelModule, OrderListModule, CommonModule, ButtonDirective, LaueferOption],
+  imports: [PanelModule, OrderListModule, CommonModule, LaueferOption, ButtonModule],
   templateUrl: './laeufer-liste.html',
   styleUrl: './laeufer-liste.scss'
 })
