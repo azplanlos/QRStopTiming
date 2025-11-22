@@ -19,6 +19,12 @@ export class LaeuferStop implements OnInit {
     this.ergebnisse = [];
   }
 
+  export() {
+    this.laueferService.export(this.ergebnisse).then(data => {
+      LaeuferStop.downloadFile(data, "ergebnisse.xlsx");
+    });
+  }
+
   lookupName(name: string): string {
     return this.laueferService.lookup(parseInt(name.replace("qrstoptiming:", "")));
   }
@@ -49,9 +55,19 @@ export class LaeuferStop implements OnInit {
     console.log("stopp @" + this.sekunden);
     this.ergebnisse.push({name: undefined, zeit: this.sekunden})
   }
+
+  private static downloadFile(urlForDownload: string, fileName: string) {
+    const linkElement = document.createElement('a');
+
+    linkElement.href = urlForDownload;
+    linkElement.download = fileName;
+    linkElement.click();
+
+    URL.revokeObjectURL(urlForDownload); // Free memory
+  }
 }
 
-interface Ergebnis {
+export interface Ergebnis {
   name: string | undefined;
   zeit: number;
 }

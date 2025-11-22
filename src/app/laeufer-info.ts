@@ -2,11 +2,13 @@ import { Injectable, OnInit } from '@angular/core';
 import { interval, shareReplay, Subject } from 'rxjs';
 import { Laeufer } from './laeufer';
 import { Buffer, Workbook } from 'exceljs';
+import { Ergebnis } from './laeufer-stop/laeufer-stop';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LaeuferInfo {
+
   private laeuferList: Laeufer[] = [];
 
   lookup(startnummer: number): string {
@@ -39,6 +41,20 @@ export class LaeuferInfo {
 
   private laeufer = new Subject<Laeufer>();
   laauferInfo$ = new Subject<Laeufer>();
+
+  export(ergebnisse: Ergebnis[]): Promise<string> {
+    const wb2 = new Workbook();
+    const ws2 = wb2.addWorksheet('Ergebnisse');
+    ergebnisse.forEach(erg => {
+      ws2.addRow([erg.zeit, erg.name]);
+    });
+    return wb2.xlsx.writeBuffer().then(buffer => {
+      const base64String = btoa(String.fromCharCode(...new Uint8Array(buffer)));
+      const dataURL = `data:application/octet-stream;base64,${base64String}`;
+      return dataURL;
+    });
+
+  }
 
   constructor() {
     this.laeufer.pipe(shareReplay()).subscribe(this.laauferInfo$);

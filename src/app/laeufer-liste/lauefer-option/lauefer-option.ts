@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { QRCodeComponent } from "angularx-qrcode";
 import qrcode from "qrcode";
 import { Button, ButtonModule } from "primeng/button";
+import { Laeufer } from '../../laeufer';
 
 @Component({
   selector: 'app-lauefer-option',
@@ -12,7 +13,7 @@ import { Button, ButtonModule } from "primeng/button";
 export class LaueferOption implements OnInit {
 
   @Input()
-  option: any;
+  option: Laeufer | undefined;
 
   @ViewChild('qrCode')
   qrcodeView: QRCodeComponent | undefined;
@@ -22,12 +23,12 @@ export class LaueferOption implements OnInit {
 
   save() {
     qrcode.toDataURL(this.qrData(), {width: 500, type: 'image/png'}).then(data => {
-      LaueferOption.downloadFile(data, this.option.name + '.png');
+      LaueferOption.downloadFile(data, this.option?.name + '.png');
     });
   }
 
   qrData(): string {
-    return 'qrstoptiming:' + this.option.startnummer;
+    return 'qrstoptiming:' + this.option?.startnummer;
   }
 
   private static downloadFile(urlForDownload: string, fileName: string) {
