@@ -57,9 +57,9 @@ export class LaeuferInfo {
     const ws2 = wb2.addWorksheet('Ergebnisse');
     ergebnisse.toSorted((a, b) => {
       return a.zeit - b.zeit
-    }).reverse().forEach(erg => {
+    }).reverse().forEach((erg, platz) => {
       const info = this.lookupScanInfo(erg.name || "");
-      ws2.addRow([erg.zeit, info?.nachname, info?.name, info?.startnummer, info?.geschlecht, info?.verein]);
+      ws2.addRow([platz, erg.zeit, info?.nachname, info?.name, info?.startnummer, info?.geschlecht, info?.verein]);
     });
     return wb2.xlsx.writeBuffer().then(buffer => {
       const base64String = btoa(String.fromCharCode(...new Uint8Array(buffer)));
