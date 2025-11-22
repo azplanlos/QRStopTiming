@@ -15,6 +15,11 @@ export class LaeuferInfo {
     return this.laeuferList.find(l => l.startnummer === startnummer)?.name || "Scan ausstehend";
   }
 
+  lookupScanInfo(scan: string): Laeufer | undefined {
+    const startnummer = parseInt(scan.replace("qrstoptiming:", "") || "0");
+    return this.laeuferList.find(l => l.startnummer === startnummer);
+  }
+
   loadXlsx(file: File) {
     console.log("load file");
     const reader = new FileReader();
@@ -28,7 +33,12 @@ export class LaeuferInfo {
             console.log("row", num, row.getCell(1).value);
             const info = {
               name: row.getCell(1).value?.toString(),
-              startnummer: parseInt(row.getCell(3).value!.toString())
+              jahrgang: parseInt(row.getCell(2).value!.toString()),
+              startnummer: parseInt(row.getCell(3).value!.toString()),
+              nachname: row.getCell(4).value?.toString(),
+              geschlecht: row.getCell(5).value?.toString(),
+              lauf: row.getCell(6).value?.toString(),
+              verein: row.getCell(7).value?.toString()
             } as Laeufer;
             this.laeufer.next(info);
             this.laeuferList.push(info);
@@ -45,8 +55,11 @@ export class LaeuferInfo {
   export(ergebnisse: Ergebnis[]): Promise<string> {
     const wb2 = new Workbook();
     const ws2 = wb2.addWorksheet('Ergebnisse');
-    ergebnisse.forEach(erg => {
-      ws2.addRow([erg.zeit, erg.name]);
+    ergebnisse.toSorted((a, b) => {
+      return a.zeit - b.zeit
+    }).reverse().forEach(erg => {
+      const info = this.lookupScanInfo(erg.name || "");
+      ws2.addRow([erg.zeit, info?.nachname, info?.name, info?.startnummer, info?.geschlecht, info?.verein]);
     });
     return wb2.xlsx.writeBuffer().then(buffer => {
       const base64String = btoa(String.fromCharCode(...new Uint8Array(buffer)));
