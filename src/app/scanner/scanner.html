@@ -1,3 +1,3 @@
-<p-panel header="Scanner" [toggleable]="true"><video #qrVideo width="300" height="300" [class.hidden]="!videoRunning()"></video><p>
+<p-panel header="Scanner" [toggleable]="true"><div [class.hidden]="!videoRunning()"><video #qrVideo width="300" height="300"></video></div><p>
 <p-button (click)="start()" icon="pi pi-camera" label="Kamera starten"></p-button>
 </p-panel>

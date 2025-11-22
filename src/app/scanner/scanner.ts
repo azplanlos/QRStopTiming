@@ -22,6 +22,8 @@ export class Scanner implements AfterViewInit, OnInit {
 
   private qrScanner!: QrScanner;
 
+  private running = false;
+
   ngOnInit(): void {
       this.filterSubject.pipe(distinctUntilChanged()).subscribe(this.qrCode$);
   }
@@ -40,7 +42,7 @@ export class Scanner implements AfterViewInit, OnInit {
 
   start() {
     this.qrScanner.start();
-    setTimeout(() => this.changeRef.tick(), 2000);
+    this.running = true;
   }
 
   videoRunning() {
